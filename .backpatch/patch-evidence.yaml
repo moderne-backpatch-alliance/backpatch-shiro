@@ -1,0 +1,22 @@
+schema: osera-patch-evidence/0.1.0
+producer: moderne
+release: 1.4.2.1-backpatch-00001
+baseline: v1.4.2+backpatch.baseline
+fixes:
+  - cve: CVE-2020-1957
+    upstream_fix_url: https://github.com/advisories/GHSA-26gr-cvq3-qxgf
+    advisory_url: https://nvd.nist.gov/vuln/detail/CVE-2020-1957
+    patch_commit_url: https://github.com/moderne-backpatch-alliance/backpatch-shiro/compare/a15e8cd~1...28a3eb9
+    basis: adapted
+    artifacts:
+      - org.apache.shiro:shiro-core
+      - org.apache.shiro:shiro-web
+    note: New in this release; ported onto 1.4.2; fixed at 1.4.2.1-backpatch-00001 (backpatch-shiro@a15e8cd..28a3eb9).
+tests:
+  commit: 28a3eb9bb86adee83e4cc278afdab6eef83cc53d
+  command: mvn -B -T1 -pl core,web -am -Dmaven.test.failure.ignore=true clean test
+  runtime: openjdk version 1.8.0_382, Apache Maven 3.9.16
+  report: shiro-core-1.4.2.1-backpatch-00001-tests.zip
+  report_sha256: d5ce3c76668f91f775e5d803df00eadf20e930a23c807ef367189e6763158b1d
+  result: pass
+  note: 570 tests at the patch commit, 0 of them skipped by the suite, 0 failed, 0 errors.
