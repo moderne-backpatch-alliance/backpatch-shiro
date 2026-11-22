@@ -1,6 +1,6 @@
 schema: osera-patch-evidence/0.1.0
 producer: moderne
-release: 1.4.2.1-backpatch-00002
+release: 1.4.2.1-backpatch-00003
 baseline: v1.4.2+backpatch.baseline
 fixes:
   - cve: CVE-2020-1957
@@ -19,12 +19,20 @@ fixes:
     basis: adapted
     artifacts:
       - org.apache.shiro:shiro-core
-    note: New in this release; ported onto 1.4.2; fixed at 1.4.2.1-backpatch-00002 (backpatch-shiro@e86138d).
+    note: Carried from 1.4.2.1-backpatch-00002; ported onto 1.4.2; fixed at 1.4.2.1-backpatch-00002 (backpatch-shiro@e86138d).
+  - cve: CVE-2023-46750
+    upstream_fix_url: https://github.com/apache/shiro/commit/d62387dc576a56a694f0353b3245a892f2f28835
+    advisory_url: https://nvd.nist.gov/vuln/detail/CVE-2023-46750
+    patch_commit_url: https://github.com/moderne-backpatch-alliance/backpatch-shiro/commit/9ab85c3
+    basis: adapted
+    artifacts:
+      - org.apache.shiro:shiro-web
+    note: New in this release; ported onto 1.4.2; fixed at 1.4.2.1-backpatch-00003 (backpatch-shiro@9ab85c3).
 tests:
-  commit: e86138d06b83a8eed7940c686e1a2ffa948a4a24
+  commit: 9ab85c33c700f4fcdb4de8a66a8d3c2ec6ff0def
   command: mvn -B -T1 -pl core,web -am -Dmaven.test.failure.ignore=true clean test
   runtime: openjdk version 1.8.0_382, Apache Maven 3.9.16
-  report: shiro-core-1.4.2.1-backpatch-00002-tests.zip
-  report_sha256: 5a172d9d1a85225eae71a75f05a7d98f5aa26009357dd646d1f8ca15a77139ca
+  report: shiro-web-1.4.2.1-backpatch-00003-tests.zip
+  report_sha256: 23ba13596cc2fa3a881853b9059641d9bc0303c2044d44b0b6dc26d8a4f01e85
   result: pass
-  note: 574 tests at the patch commit, 0 of them skipped by the suite, 0 failed, 0 errors.
+  note: 575 tests at the patch commit, 0 of them skipped by the suite, 0 failed, 0 errors.
